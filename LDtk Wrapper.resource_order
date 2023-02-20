@@ -1,0 +1,22 @@
+{
+  "FolderOrderSettings": [
+    {"name":"LDtkWrapper","order":1,"path":"folders/LDtkWrapper.yy",},
+    {"name":"Constructors","order":1,"path":"folders/LDtkWrapper/Constructors.yy",},
+    {"name":"Functions","order":2,"path":"folders/LDtkWrapper/Functions.yy",},
+    {"name":"Test","order":2,"path":"folders/Test.yy",},
+  ],
+  "ResourceOrderSettings": [
+    {"name":"pretty_print","order":4,"path":"scripts/pretty_print/pretty_print.yy",},
+    {"name":"LDtkCamera","order":5,"path":"scripts/LDtkCamera/LDtkCamera.yy",},
+    {"name":"LDtkRoom","order":4,"path":"scripts/LDtkRoom/LDtkRoom.yy",},
+    {"name":"LDtkLayer","order":6,"path":"scripts/LDtkLayer/LDtkLayer.yy",},
+    {"name":"objEntity","order":5,"path":"objects/objEntity/objEntity.yy",},
+    {"name":"LDtkEntity","order":5,"path":"scripts/LDtkEntity/LDtkEntity.yy",},
+    {"name":"objTest","order":1,"path":"objects/objTest/objTest.yy",},
+    {"name":"LDtkError","order":1,"path":"scripts/LDtkError/LDtkError.yy",},
+    {"name":"tsTiles","order":3,"path":"tilesets/tsTiles/tsTiles.yy",},
+    {"name":"sprTiles","order":4,"path":"sprites/sprTiles/sprTiles.yy",},
+    {"name":"LDtkLevel","order":3,"path":"scripts/LDtkLevel/LDtkLevel.yy",},
+    {"name":"Room1","order":2,"path":"rooms/Room1/Room1.yy",},
+  ],
+}

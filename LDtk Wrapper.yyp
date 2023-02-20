@@ -1,0 +1,57 @@
+{
+  "resourceType": "GMProject",
+  "resourceVersion": "1.6",
+  "name": "LDtk Wrapper",
+  "AudioGroups": [
+    {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},
+  ],
+  "configs": {
+    "children": [],
+    "name": "Default",
+  },
+  "defaultScriptType": 1,
+  "Folders": [
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"LDtkWrapper","folderPath":"folders/LDtkWrapper.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Constructors","folderPath":"folders/LDtkWrapper/Constructors.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Functions","folderPath":"folders/LDtkWrapper/Functions.yy","order":2,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Test","folderPath":"folders/Test.yy","order":2,},
+  ],
+  "IncludedFiles": [
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"metroidtest.ldtk","CopyToMask":-1,"filePath":"datafiles",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Level_0.ldtkl","CopyToMask":-1,"filePath":"datafiles/metroidtest",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Level_1.ldtkl","CopyToMask":-1,"filePath":"datafiles/metroidtest",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Level_2.ldtkl","CopyToMask":-1,"filePath":"datafiles/metroidtest",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Level_3.ldtkl","CopyToMask":-1,"filePath":"datafiles/metroidtest",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Level_4.ldtkl","CopyToMask":-1,"filePath":"datafiles/metroidtest",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Level_5.ldtkl","CopyToMask":-1,"filePath":"datafiles/metroidtest",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Level_6.ldtkl","CopyToMask":-1,"filePath":"datafiles/metroidtest",},
+    {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"Level_7.ldtkl","CopyToMask":-1,"filePath":"datafiles/metroidtest",},
+  ],
+  "isEcma": false,
+  "MetaData": {
+    "IDEVersion": "2023.1.1.62",
+  },
+  "resources": [
+    {"id":{"name":"pretty_print","path":"scripts/pretty_print/pretty_print.yy",},"order":4,},
+    {"id":{"name":"LDtkCamera","path":"scripts/LDtkCamera/LDtkCamera.yy",},"order":5,},
+    {"id":{"name":"LDtkRoom","path":"scripts/LDtkRoom/LDtkRoom.yy",},"order":4,},
+    {"id":{"name":"LDtkLayer","path":"scripts/LDtkLayer/LDtkLayer.yy",},"order":6,},
+    {"id":{"name":"objEntity","path":"objects/objEntity/objEntity.yy",},"order":5,},
+    {"id":{"name":"LDtkEntity","path":"scripts/LDtkEntity/LDtkEntity.yy",},"order":5,},
+    {"id":{"name":"window_scale","path":"scripts/window_scale/window_scale.yy",},"order":0,},
+    {"id":{"name":"objTest","path":"objects/objTest/objTest.yy",},"order":1,},
+    {"id":{"name":"LDtkError","path":"scripts/LDtkError/LDtkError.yy",},"order":1,},
+    {"id":{"name":"tsTiles","path":"tilesets/tsTiles/tsTiles.yy",},"order":3,},
+    {"id":{"name":"sprTiles","path":"sprites/sprTiles/sprTiles.yy",},"order":4,},
+    {"id":{"name":"LDtkLevel","path":"scripts/LDtkLevel/LDtkLevel.yy",},"order":3,},
+    {"id":{"name":"LDtkLoader","path":"scripts/LDtkLoader/LDtkLoader.yy",},"order":0,},
+    {"id":{"name":"ldtk_parse_field_instances","path":"scripts/ldtk_parse_field_instances/ldtk_parse_field_instances.yy",},"order":0,},
+    {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},"order":2,},
+  ],
+  "RoomOrderNodes": [
+    {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+  ],
+  "TextureGroups": [
+    {"resourceType":"GMTextureGroup","resourceVersion":"1.3","name":"Default","autocrop":true,"border":2,"compressFormat":"bz2","directory":"","groupParent":null,"isScaled":true,"loadType":"default","mipsToGenerate":0,"targets":-1,},
+  ],
+}
