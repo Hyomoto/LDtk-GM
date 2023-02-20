@@ -5,7 +5,7 @@
 ## Philosophy
 * LDtk-GM will convert LDtk data into GM layers, tilemaps and objects.  It usually allows the user to continue working with GM rooms, layers and instances the same way they would if LDtk were *not* being used.  If you create a "Entities" layer in LDtk, an "Entities" layer will be created in GM and can be used to spawn instances just as you would expect.  If you just want to use LDtk as a replacement for GM's rooms, you can easily do so.  However, thanks to the flexibility of the LDtk format and mappings, we can do some interesting things.  For example, if you wanted to make a bunch of "room pieces" in LDtk, you can set up some layer mappings and spawn them all into different positions on the same layers to build your maps.  This allows you to treat many LDtk levels as a single "room" in GM and opens up many possibilities.
 
-* To facilitate rapid iteration and development, LDtk-GM also includes a file watcher which can detect changes to source files and reload them automatically.  This is not necessarily a feature of LDtk, but is included for development convenience.
+* To facilitate rapid iteration and development, LDtk-GM also includes a file watcher which can detect changes to source files and reload them automatically.  This is not necessarily a feature of LDtk, but is included for GM development convenience.
 
 * For simplicity, LDtk-GM does *not* use "Let it crash" design philosophy.  Any discovered errors will be indicated via the Output in GM, and are usually skipped.  For example, if a layer uses a tileset that hasn't been defined (and can't be discovered), that layer will simply not be loaded.  This ensures that live development can be done safely and mistakes can be fixed without large interruptions.
 
