@@ -1,3 +1,6 @@
+|Jump To|[Philosophy](#philosophy)|[Usage](#usage)|[File Watcher](#file-watcher)|[Signals](#signals)|[Reloading Rooms](#reloading-rooms)|[Limitations](#limitations)|
+|---|-|-|-|-|-|-|
+
 <img src="https://user-images.githubusercontent.com/6281477/220187112-3c760123-c102-48ad-aec9-ca337f51978a.svg" align="right"></img>
 # LDtk-GM
  A simple LDtk-to-GM interpreter. Check the [Wiki](https://github.com/Hyomoto/LDtk-GM/wiki) for more detailed information.
