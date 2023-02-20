@@ -44,19 +44,25 @@ This can be a powerful development tool, but two performance considerations shou
 By default, the watcher ticks every half second.  You can modify LDTK_WATCHER_TICK_RATE if you would like it to do so more or less often.  Lastly, the watcher *only* runs if called.  To turn it off, simply do not call it at all.  However, should you wish to pause or stop it manually, it is a GML time source and can be accessed through the `watcher` parameter of your LDtkLoader.
 
 ## Signals
-The file watcher will automatically reload files when they change, but this is not immediately reflected in the project.  To facilitate interacting with the actions of the LDtkLoader, signals can be used.  The following signals exist:
+While LDtk-GM tries to leverage as much of GM as possible, there are some events that are unique to LDtk and must be handled differently.  For example, while the file watcher automatically reload files when they change, this does not trigger LDtkRooms to restart or update.  Both LDtkLoader and LDtkRoom make use of "signals" to allow you to add code you want to run when certain events occur.  For those familiar, it is a simple pub-sub system.
+```GML
+loader.listen( "reload", function( _v ) { show_debug_message( _v )});
+```
+This would print the name of the level that reloaded to the output log. The signals produced by the LDtkLoader are:
 * open - Called when LDtkLoader finishes an open operation.
 * reload - When a level is reloaded, this signal is called and the level id will be passed as an argument.  If multiple levels were reloaded, this signal will be sent multiple times for each.
-* start - When a LDtk room is created or restarted, this signal is transmitted along with the level id.
+Additionally, an LDtkRoom also produces signals:
+* start - Called when the room is created, or restarted.
+* reload- Called when the room is reloaded.  See [reloading rooms](#reloading-rooms) for more.
 
-Signals can be "listened" to by calling `listen` on the loader and providing the method to call:
+As denoted above, signals can be "listened" to by calling `listen` on the loader/room and providing a method to call:
 ```GML
 loader.listen( "reload", function( _v ) {
   if ( _v == level.id )
     level.reload( loader );
 });
 ```
-In this case, if level reloaded is the current level, we call for it to be reloaded.  If you want your levels to update in real time, this is the basis of how to make that happen.  It's important to understand this could cause a lot of problems.  While the reload process will update instances and tilemaps, it doesn't offer any protections against unintended consequences.  Thus, you might opt to restart the room instead which ensures everything will be started as expected.  Lastly, because instances created after a room exists do not trigger room start events, and this event is often necessary to set up variables correctly, the start signal can be used to trigger that event on all objects created:
+In this case, if the level reloaded was the current level, we call for the room to be reloaded.  If you want your levels to update in real time, this is the basis of making that happen.  The other major event is the LDtkRoom "start" signal.  Because instances created after a room exists do not trigger Room Start events, and this object event is often desirable to set up variables correctly, listening to the "start" signal we can mimic this behavior:
 ```GML
 loader.listen( "start", function() {
   array_foreach( level.entities.list, function( _v ) {
@@ -64,3 +70,7 @@ loader.listen( "start", function() {
   });
 });
 ```
+This will loop through all of the level entities and call the Room Start event on them.
+
+## Reloading Rooms
+Reloading rooms is a developer-oriented feature that allows changes in the LDtkLevel to be represented in the LDtkRoom.  From a technical perspective, all tilemaps will be rebuilt, and any instances that are *new* will be created.  This can be useful but it is important to understand this could cause problems.  While LDtkLoader tries to recover from errors, it offers no protection for your *game*.  Thus, a reload might cause errors or a crash you wouldn't normally experience.  In these cases you might opt to restart an LDtkRoom instead, which will clean up everything and rebuild it from scratch, much like `room_restart()`.
