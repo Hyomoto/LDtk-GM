@@ -10,7 +10,7 @@
 * For simplicity, LDtk-GM does *not* use "Let it crash" design philosophy.  Any discovered errors will be indicated via the Output in GM, and are usually skipped.  For example, if a layer uses a tileset that hasn't been defined (and can't be discovered), that layer will simply not be loaded.  This ensures that live development can be done safely and mistakes can be fixed without large interruptions.
 
 ## Usage
-The primary source of interaction is the LDtkLoader.  Start by making one:
+The primary source of interaction is the [LDtkLoader](https://github.com/Hyomoto/LDtk-GM/wiki/LDtkLoader).  Start by making one:
 ```GML
 loader = new LDtkLoader();
 ```
@@ -25,11 +25,11 @@ loader.mappings.tilesets= { "Castle" : tsCastleFg, "Shrubs" : tsShubs }
 ```
 The mappings are simple key-value pairs where the key is the name of the LDtk asset, and the value is the Gamemaker asset index.
 
-Lastly, to actually *create* your LDtk Level in GM you must look up the level and create it.  All levels are stored in `levels` on the loader:
+Lastly, to actually *create* your LDtk Level in GM you can call create().
 ```GML
-level = loader.levels.byKey[$ "Level_0" ].create(0,0);
+level = loader.create("Level_0");
 ```
-You can look up levels by their id, or index, using `byId`, the order they were stored in the project file, or `byKey` which will look the level up by the name.  The create function is called to instantiate the room and will return a LDtkRoom which represents the "live" data created.  It is provided for convenience and to facillitate live reloading.  For example, you can call `restart()` to clear all the instances and layers created, and then recreate them.  This behaves like `room_restart()` would except it only affects instances and layers created by the loader.
+The levels are also stored in the `levels` variable on the LDtkLoader.  You can look them up index, using `byId`, by their name, using `byKey`, and their instance identifier, using `byIid`.  You can then call create on the level directly.  Whatever route you choose will return an [LDtkRoom](https://github.com/Hyomoto/LDtk-GM/wiki/LDtkRoom).  This struct is provided for convenience and isn't necessary to use.  However, it does include convenience methods such as `restart()` to clear all the instances and layers created, and then recreate them.
 
 ## File Watcher
 The file watcher is used to reload changed files automatically.  When using the file watcher you can either provide a specific file, or a file mask.
