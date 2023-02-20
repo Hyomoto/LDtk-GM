@@ -74,3 +74,8 @@ This will loop through all of the level entities and call the Room Start event o
 
 ## Reloading Rooms
 Reloading rooms is a developer-oriented feature that allows changes in the LDtkLevel to be represented in the LDtkRoom.  From a technical perspective, all tilemaps will be rebuilt, and any instances that are *new* will be created.  This can be useful but it is important to understand this could cause problems.  While LDtkLoader tries to recover from errors, it offers no protection for your *game*.  Thus, a reload might cause errors or a crash you wouldn't normally experience.  In these cases you might opt to restart an LDtkRoom instead, which will clean up everything and rebuild it from scratch, much like `room_restart()`.
+
+## Limitations
+LDtk-GM supports most of LDtk's native features.  Notable exceptions are below:
+* Tile-stacking - Safe to use, however only the *top* tile will end up being rendered.  This is because GM tilemaps do not support tile stacking, and thus the last tile written will be the tile that is displayed.
+* Multi-world - Currently this feature is not supported and enabling it will cause issues.  In the future support will be added.
