@@ -1,5 +1,5 @@
 # LDtk-GM
- A simple LDtk-to-GM interpreter. Check the [Wiki](#home) for more detailed information.
+ A simple LDtk-to-GM interpreter. Check the [Wiki](https://github.com/Hyomoto/LDtk-GM/wiki) for more detailed information.
 
 ## Philosophy
 * LDtk-GM will convert LDtk data into GM layers, tilemaps and objects.  It usually allows the user to continue working with GM rooms, layers and instances the same way they would if LDtk were *not* being used.  If you create a "Entities" layer in LDtk, an "Entities" layer will be created in GM and can be used to spawn instances just as you would expect.  If you just want to use LDtk as a replacement for GM's rooms, you can easily do so.  However, thanks to the flexibility of the LDtk format and mappings, we can do some interesting things.  For example, if you wanted to make a bunch of "room pieces" in LDtk, you can set up some layer mappings and spawn them all into different positions on the same layers to build your maps.  This allows you to treat many LDtk levels as a single "room" in GM and opens up many possibilities.
