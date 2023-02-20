@@ -31,7 +31,7 @@ loader.watch( "levels.ldtk" );
 ```
 When a mask is used, *all* files matching that mask will be included in the watcher.  This can be used, for example, to include all files in a directory.  If you are using the separate files option in LDtk, you can use this to include all of them in the watcher easily.
 ```GML
-loader.watch( "levels\" );
+loader.watch( "levels\\" );
 ```
 This can be a powerful development tool, but two performance considerations should be had.  First off, if you have a large ldtk file, you should use the "separate levels" option instead as reloading one very large file each time a small change in a level is made could cause performance issues.  Secondly, the file watcher isn't optimized for use outside of development.  If you are having performance issues with the file watcher you have a few options.  The simplest is to only watch the file(s) you are editing, rather than all the files in your LDtk world.
 
