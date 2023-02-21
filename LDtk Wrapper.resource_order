@@ -1,8 +1,8 @@
 {
   "FolderOrderSettings": [
-    {"name":"LDtkWrapper","order":1,"path":"folders/LDtkWrapper.yy",},
-    {"name":"Constructors","order":1,"path":"folders/LDtkWrapper/Constructors.yy",},
-    {"name":"Functions","order":2,"path":"folders/LDtkWrapper/Functions.yy",},
+    {"name":"LDtkGM","order":1,"path":"folders/LDtkGM.yy",},
+    {"name":"Constructors","order":1,"path":"folders/LDtkGM/Constructors.yy",},
+    {"name":"Functions","order":2,"path":"folders/LDtkGM/Functions.yy",},
     {"name":"Test","order":2,"path":"folders/Test.yy",},
   ],
   "ResourceOrderSettings": [

@@ -1,3 +1,5 @@
+/// @param This macro controls how often the watcher ticks.
+#macro LDTK_WATCHER_TICK_RATE 0.5
 /// @param {bool} _verbose	If true, outputs extra text during loading operations.
 /// @desc	Used to read LDtk files into GM-friendly structs and arrays.
 function LDtkLoader( _verbose = false ) constructor {
@@ -216,6 +218,28 @@ function LDtkLoader( _verbose = false ) constructor {
 		signal( "reload", _levelId );
 		
 	}
+	/// @param {real,string}	_levelId	The level to instantiate.
+	/// @desc	Creates the Level with the given id.  Will accept index, name or iid.  If
+	///		the level can not be found, an error will be displayed in the Output console.
+	static create	= function( _levelId ) {
+		var _level;
+		
+		if ( is_real( _levelId )) {
+			if ( _levelId < 0 || _levelId >= array_length( levels.byId ))
+				return show_debug_message( "LDtkLoader.create :: No level '" + string( _levelId ) + "' found.  Creation skipped." );
+			_level	= levels.byId[ _levelId ];
+			
+		} else if ( is_string( _levelId )) {
+			_level	= levels.byKey[$ _levelId ] ?? levels.byIid[$ _levelId ];
+			
+			if ( is_undefined( _level ))
+				return show_debug_message( "LDtkLoader.create :: No level '" + string( _levelId ) + "' found.  Creation skipped." );
+			
+		} else
+			return show_debug_message( "LDtkLoader.create :: Bad level id provided. Creation skipped." );
+		return _level.create( 0, 0 );
+		
+	}
 	static signal	= function( _line, _value ) {
 		var _signals	= signals[$ _line ] ?? [];
 		var _i = 0; repeat( array_length( _signals )) {
@@ -241,13 +265,18 @@ function LDtkLoader( _verbose = false ) constructor {
 		}));
 		
 	}
+	static dispose	= function() {
+		try{ time_source_destroy( watcher ); } catch(_) {}
+		watcher = undefined;
+		
+	}
 	/// @param {string} ...	A filename or directory to watch.
 	/// @desc	Starts the file watcher, as well as adds the specified files to the
 	///		list of files to watch. Note that this only triggers the loader to reload
 	///		the files.  To see the results in-game you would need an object to listen
 	///		the "reload" signal and respond accordingly.
 	static watch	= function() {
-		watcher	??= ( function() { var _ts = time_source_create( time_source_global, 0.25, time_source_units_seconds, function() {
+		watcher	??= ( function() { var _ts = time_source_create( time_source_global, LDTK_WATCHER_TICK_RATE, time_source_units_seconds, function() {
 			array_foreach( watchList, function( _v ) {
 				if ( sha1_file( path + _v.file ) == _v.hash )
 					return;
@@ -276,9 +305,10 @@ function LDtkLoader( _verbose = false ) constructor {
 			
 				var _next	= file_find_first( path + _dir + ( _mask == "" ? "*" : _mask ), 0 );
 				while( _next != "" ) {
-					array_push( watchList, { "hash" : sha1_file( path + _dir + _next ), "file" : _dir + _next });
+					if ( file_exists( _next ))
+						array_push( watchList, { "hash" : sha1_file( path + _dir + _next ), "file" : _dir + _next });
 					_next	= file_find_next();
-				
+					
 				}
 				file_find_close();
 			

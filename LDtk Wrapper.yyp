@@ -11,9 +11,9 @@
   },
   "defaultScriptType": 1,
   "Folders": [
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"LDtkWrapper","folderPath":"folders/LDtkWrapper.yy","order":1,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Constructors","folderPath":"folders/LDtkWrapper/Constructors.yy","order":1,},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Functions","folderPath":"folders/LDtkWrapper/Functions.yy","order":2,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"LDtkGM","folderPath":"folders/LDtkGM.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Constructors","folderPath":"folders/LDtkGM/Constructors.yy","order":1,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Functions","folderPath":"folders/LDtkGM/Functions.yy","order":2,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Test","folderPath":"folders/Test.yy","order":2,},
   ],
   "IncludedFiles": [

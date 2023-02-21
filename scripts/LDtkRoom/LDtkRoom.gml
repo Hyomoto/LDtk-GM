@@ -1,11 +1,12 @@
 /// @param {real}	_x
 /// @param {real}	_y
 /// @param {struct.LDtkLevel}	_level
+/// @param {struct} _mappings	A table of layer mappings.
 /// @desc	A LDtk room created by instantiating a LDtk Level.  Contains helper
 ///		functions and data references to the layers and instances created from
 ///		the LDtk data.  It's worth noting that many GML-native functions will
 ///		still work, and this is provided as a convenience.
-function LDtkRoom( _x, _y, _level ) constructor {
+function LDtkRoom( _x, _y, _level, _mappings ) constructor {
 	/// @desc	Hides this room.
 	static hide	= function() {
 		if ( hidden )
@@ -88,7 +89,7 @@ function LDtkRoom( _x, _y, _level ) constructor {
 	static build	= function( _level ) {
 		var _i = 0; repeat( array_length( layers.byId )) {
 			var _layer	= _level.layers.byId[ _i++ ];
-			var _target	= layer_create( _i * 100 );
+			var _target	= mappings[$ _layer.id ] ?? layer_create( _i * 100 );
 			var _result;
 			
 			switch( _layer.type ) {
@@ -132,6 +133,7 @@ function LDtkRoom( _x, _y, _level ) constructor {
 			layers.byKey[$ _layer.id ]	= _result;
 			
 		}
+		signal( "start" );
 		
 	}
 	/// @param {Struct.LDtkLoader} _loader
@@ -178,6 +180,32 @@ function LDtkRoom( _x, _y, _level ) constructor {
 			}
 			
 		}
+		signal( "reload" );
+		
+	}
+	static signal	= function( _line, _value = undefined ) {
+		var _signals	= signals[$ _line ] ?? [];
+		var _i = 0; repeat( array_length( _signals )) {
+			_signals[ _i++ ]( _value );
+			
+		}
+		
+	}
+	static listen	= function( _line, _method ) {
+		signals[$ _line ] ??= [];
+		
+		array_push( signals[$ _line ], _method );
+		
+		return _method;
+		
+	}
+	static unlisten	= function( _line, _method ) {
+		signals[$ _line ] ??= [];
+		
+		array_filter_ext( signals[$ _line ], method({ "v" : _method }, function( _v ) {
+			return _v == v;
+			
+		}));
 		
 	}
 	static hidden	= false;
@@ -197,6 +225,8 @@ function LDtkRoom( _x, _y, _level ) constructor {
 	height	= _level.height;
 	source	= _level.id;
 	level	= _level;
+	signals	= {};
+	mappings= _mappings;
 	
 	build( _level );
 	

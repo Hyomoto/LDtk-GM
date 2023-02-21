@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Constructors",
-    "path": "folders/LDtkWrapper/Constructors.yy",
+    "path": "folders/LDtkGM/Constructors.yy",
   },
 }

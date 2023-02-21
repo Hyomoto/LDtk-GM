@@ -7,11 +7,12 @@
 function LDtkLevel( _source, _objects, _uids ) constructor {
 	/// @param {real} _x	The x position to instantiate at.
 	/// @param {real} _y	The y position to instantiate at.
+	/// @param {struct} _mappings	Optional: A struct of layer mappings.
 	/// @desc	Instantiates the level by creating layers and instances as described
 	///		by the LDtk data.  If no _x or _y is provided, these will be done relative
 	///		to the absolute position in LDtk.
-	static create	= function( _x = x, _y = y ) {
-		return new LDtkRoom( _x, _y, self );
+	static create	= function( _x = x, _y = y, _mappings = {}) {
+		return new LDtkRoom( _x, _y, self, _mappings );
 		
 	}
 	id		= string( _source.identifier );

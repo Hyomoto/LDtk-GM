@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Functions",
-    "path": "folders/LDtkWrapper/Functions.yy",
+    "path": "folders/LDtkGM/Functions.yy",
   },
 }
